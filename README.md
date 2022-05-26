@@ -21,13 +21,14 @@ Step2: running the train.py;
 Step3: eval.py to get mAP
 
 ## About the Transfer Learning
-The model path of the source domain is args.resume in trainLabelNum.py
+The model path of the source domain is args.resume in trainLabelNum.py:
 
 checkpoint = torch.load(args.resume)
 ssd_net.load_state_dict(checkpoint)
 
 For the multi-class, like multiFruit dataset, the SSD structure is different with single-class:
 
+```bash
 if args.resume:
         print('Resuming training, loading {}...'.format(args.resume))
         preTrain_dict = torch.load(args.resume,map_location=torch.device('cpu'))
@@ -48,6 +49,7 @@ if args.resume:
         
         ssd_net.load_state_dict(preTrain_dict)
         print('SSD load model')
+```
 
 ## About the CornerNet
 
